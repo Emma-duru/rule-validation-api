@@ -56,10 +56,57 @@ const validate_rule_post = (req, res) => {
     }
   };
 
+  // Check if the rule field condition is true
+  const ruleFieldValidate = (rule, data) => {
+    const result =
+      rule.condition === "eq"
+        ? data[rule.field] === rule.condition_value
+        : rule.condition === "neq"
+        ? data[rule.field] !== rule.condition_value
+        : rule.condition === "gt"
+        ? data[rule.field] > rule.condition_value
+        : rule.condition === "gte"
+        ? data[rule.field] >= rule.condition_value
+        : rule.condition === "contains"
+        ? data[rule.fields].includes(rule.condition_value)
+        : "";
+    return result;
+  };
+
   if (!validateRuleandData(rule, data) || !validateRule(rule, data)) {
     response.status = "error";
     response.data = null;
     res.status(400);
+  }
+  // Check if rule field is validated
+  else {
+    if (ruleFieldValidate(rule, data)) {
+      response.message = `field ${rule.field} successfully validated.`;
+      response.status = "success";
+      response.data = {
+        validation: {
+          error: false,
+          field: rule.field,
+          field_value: data[rule.field],
+          condition: rule.condition,
+          condition_value: rule.condition_value,
+        },
+      };
+      res.status(200);
+    } else {
+      response.message = `field ${rule.field} failed validation`;
+      response.status = "error";
+      response.data = {
+        validation: {
+          error: true,
+          field: rule.field,
+          field_value: data[rule.field],
+          condition: rule.condition,
+          condition_value: rule.condition_value,
+        },
+      };
+      res.status(400);
+    }
   }
 
   res.json(response);
