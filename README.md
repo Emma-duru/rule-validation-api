@@ -106,7 +106,8 @@ fetch("/validate-rule", {
             "position": "Captain",
             "missions": 45
         }
-    })
+    }),
+    headers: { "Content-Type": "application/json" }
 })
 ```
 
