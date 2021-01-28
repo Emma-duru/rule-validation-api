@@ -18,7 +18,7 @@ const home_get = (req, res) => {
     name: "Duru, Emmanuella Victoria",
     github: "@Emma-duru",
     email: "emmavduru@gmail.com",
-    mobile: +2348059300673,
+    mobile: "+2348059300673",
   };
 
   // Outputs the response
