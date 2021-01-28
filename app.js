@@ -1,6 +1,7 @@
 // Import dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const apiRoutes = require("./routes/apiRoutes");
 const { validatePayload } = require("./middleware/apiMiddleware");
 
@@ -11,6 +12,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(validatePayload);
+app.use(cors());
 
 // Routes
 app.use(apiRoutes);
