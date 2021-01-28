@@ -2,9 +2,10 @@
   "name": "rule_validation_api",
   "version": "1.0.0",
   "description": "A simple rule validation API for the Flutterwave Technical Assessment",
+  "repository": "https://github.com/Emma-duru/rule-validation-api.git",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app"
   },
   "author": "Duru, Emmanuella Victoria",
   "license": "ISC",

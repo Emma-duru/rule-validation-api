@@ -163,4 +163,6 @@ fetch("/validate-rule", {
   `git clone https://github.com/Emma-duru/rule-validation-api.git`
   on your terminal
 
-- To install the necessary packages, run `node app`
+- To install the necessary packages, run `npm install`
+
+- To run the project, run `npm start`
