@@ -55,7 +55,7 @@ const validate_rule_post = (req, res) => {
       };
       res.status(200);
     } else {
-      response.message = `field ${rule.field} failed validation`;
+      response.message = `field ${rule.field} failed validation.`;
       response.status = "error";
       response.data = {
         validation: {

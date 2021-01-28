@@ -4,7 +4,7 @@ const validateRuleandData = (rule, data, response) => {
     response.message = !rule ? "rule is required." : "data is required.";
     return false;
   } else if (typeof rule !== "object") {
-    response.message = "rule should be an object";
+    response.message = "rule should be an object.";
     return false;
   } else if (typeof data !== "object" && typeof data !== "string") {
     response.message = "data should be an object, array or string.";
