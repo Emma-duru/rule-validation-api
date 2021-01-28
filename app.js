@@ -1,13 +1,12 @@
 // Import dependencies
 const express = require("express");
+const apiRoutes = require("./routes/apiRoutes");
 
 // Initialize express app
 const app = express();
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("Home Route");
-});
+app.use(apiRoutes);
 
 // Server listening at specified port
 const PORT = process.env.PORT || 3000;
