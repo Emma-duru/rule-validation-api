@@ -39,7 +39,24 @@ const validate_rule_post = (req, res) => {
     }
   };
 
-  if (!validateRuleandData(rule, data)) {
+  // Validates the properties in the rule field
+  const validateRule = (rule, data) => {
+    if (!rule.field || !rule.condition || !rule.condition_value) {
+      response.message = !rule.field
+        ? "rule field is required."
+        : !rule.condition
+        ? "rule condition is required."
+        : "rule condition value is required.";
+      return false;
+    } else if (!data[rule.field]) {
+      response.message = `field ${rule.field} is missing from data.`;
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  if (!validateRuleandData(rule, data) || !validateRule(rule, data)) {
     response.status = "error";
     response.data = null;
     res.status(400);
