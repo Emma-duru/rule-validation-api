@@ -124,7 +124,7 @@ fetch("/validate-rule", {
         "field": "missions",
         "field_value": 30,
         "condition": "gte",
-        "condition_value: 30
+        "condition_value": 30
         }
     }
   }
@@ -144,7 +144,7 @@ fetch("/validate-rule", {
         "field": "missions",
         "field_value": 30,
         "condition": "gte",
-        "condition_value: 54
+        "condition_value": 54
         }
     }
   }
